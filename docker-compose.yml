@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: parcial2web-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: parcial
+      POSTGRES_PASSWORD: parcial123
+      POSTGRES_DB: parcial2web_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - parcial2web-data:/var/lib/postgresql/data
+
+volumes:
+  parcial2web-data:
