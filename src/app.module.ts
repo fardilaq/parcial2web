@@ -8,6 +8,8 @@ import { UsersModule } from './users/users.module.js';
 import { AuthenticationModule } from '@nestjs/authentication';
 import { AuthorizationModule } from '@nestjs/authorization';
 import { AuthModule } from './auth/auth.module.js';
+import { ReservationsModule } from './reservations/reservations.module.js';
+import { ParkingSpotsModule } from './parking-spots/parking-spots.module.js';
 
 @Module({
   imports: [
@@ -42,6 +44,8 @@ import { AuthModule } from './auth/auth.module.js';
     RolesModule,
     UsersModule,
     AuthModule,
+    ReservationsModule,
+    ParkingSpotsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

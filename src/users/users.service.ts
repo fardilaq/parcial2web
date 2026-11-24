@@ -9,6 +9,13 @@ import { RolesService } from '../roles/roles.service.js';
 
 @Injectable()
 export class UsersService {
+  findOne(user_id: string) {
+    return this.usersRepo.findOne({
+      where: { id: user_id },
+      relations: { roles: true },
+    });
+
+  }
   constructor(
     @InjectRepository(User)
     private readonly usersRepo: Repository<User>,
