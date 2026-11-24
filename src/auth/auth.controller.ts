@@ -39,6 +39,7 @@ export class AuthController {
   async refresh(@Body() dto: RefreshDto) {
     return this.tokenService.refresh(dto.refreshToken);
   }
+  
   @Public()
   @HttpCode(204)
   @Post('logout')

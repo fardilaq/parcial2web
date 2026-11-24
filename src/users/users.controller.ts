@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch } from '@nestjs/common';
 import { Can } from '@nestjs/authorization';
 import { CurrentUser } from '@nestjs/authentication';
 import { UsersService } from './users.service.js';
@@ -40,4 +40,18 @@ export class UsersController {
     await this.usersService.assignRoles(id, dto.roles);
     return { message: 'Roles asignados' };
   }
+
+  @Can(AdminPolicy, 'manage')
+  @Delete(':id/delete')
+  async deleteById(@Param('id') id: string) {
+    await this.usersService.deleteById(id);
+    return { message: 'Usuario eliminado con éxito' };
+  }
 }
+
+/*
+{
+   "email:prueba1@gmail.com,
+   "password":"12jdsksjdksdew34"
+}
+   */

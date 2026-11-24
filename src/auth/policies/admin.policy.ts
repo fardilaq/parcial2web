@@ -12,4 +12,5 @@ export class AdminPolicy implements PolicyBefore<User, Ability<AdminPolicy>> {
   manage(user: User | null): boolean {
     return false;
   }
+  
 }

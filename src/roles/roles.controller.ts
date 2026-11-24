@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Delete, Param } from '@nestjs/common';
 import { Can } from '@nestjs/authorization';
 import { RolesService } from './roles.service.js';
 import { CreateRoleDto } from './dto/create-role.dto.js';
@@ -19,5 +19,12 @@ export class RolesController {
   @Get()
   findAll() {
     return this.rolesService.findAll();
+  }
+
+  @Can(AdminPolicy, 'manage')
+  @Delete(':id')
+  async deleteById(@Param('id') id: string) {
+    await this.rolesService.deleteById(id);
+    return { message: 'Rol eliminado con éxito' };
   }
 }

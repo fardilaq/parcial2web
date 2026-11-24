@@ -74,4 +74,10 @@ export class UsersService {
   findAllUsers(): Promise<User[]> {
   return this.usersRepo.find({ relations: { roles: true } });
 }
+  deleteById(id: string): Promise<void> {
+    if (!id) {
+      throw new BadRequestException('ID no proporcionado');
+    }
+    return this.usersRepo.delete(id).then(() => {});
+  }
 }
